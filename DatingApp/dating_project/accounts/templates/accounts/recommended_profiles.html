@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Рекомендованные профили</title>
+</head>
+<body>
+    <h1>Рекомендованные профили</h1>
+    <ul>
+        {% for user in recommended_users %}
+            <li>
+                <strong>{{ user.username }}</strong> - {{ user.location }} <br>
+                Пол: {{ user.gender }} <br>
+                {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="Фото {{ user.username }}" width="100" height="100">
+                {% else %}
+                    <p>Фото отсутствует</p>
+                {% endif %}
+                <a href="{% url 'like_profile' user.id %}">Поставить лайк</a>
+            </li>
+        {% empty %}
+            <li>Нет доступных анкет для рекомендаций.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'profile' request.user.id %}">Вернуться в профиль</a>
+</body>
+</html>

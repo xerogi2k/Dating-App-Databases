@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль пользователя</title>
+</head>
+<body>
+    <h1>Профиль пользователя</h1>
+    <p>Имя пользователя: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Пол: {{ user.gender }}</p>
+    <p>Дата рождения: {{ user.birthdate }}</p>
+    <p>Местоположение: {{ user.location }}</p>
+    <p>Описание: {{ user.bio }}</p>
+    {% if user.profile_picture %}
+        <img src="{{ user.profile_picture.url }}" alt="Фото профиля" width="200">
+    {% else %}
+        <p>Фотография отсутствует</p>
+    {% endif %}
+    <a href="{% url 'recommended_profiles' %}">Смотреть рекомендации</a>
+    <a href="{% url 'matches' %}">Посмотреть Мэтчи</a>
+    <a href="{% url 'edit_profile' %}">Редактировать профиль</a>
+    <a href="{% url 'logout' %}">Выйти</a>
+</body>
+</html>
