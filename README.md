@@ -1,2 +1,2 @@
 # Dating-App-Databases
-Курсовая Работа на Django и PostgreSQL
+Django & PostgreSQL project
